@@ -27,6 +27,7 @@ class Reviews extends Block
 
 		$reviews
 			->setLocation('block', '==', 'acf/reviews') // ważne!
+
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
@@ -74,6 +75,7 @@ class Reviews extends Block
 					'section-brand' => 'Marki',
 					'section-gradient' => 'Gradient',
 					'section-dark' => 'Ciemne',
+					'section-light-green' => 'Jasno zielone',
 				],
 				'default_value' => 'none',
 				'ui' => 0, // Ulepszony interfejs
@@ -87,6 +89,7 @@ class Reviews extends Block
 	{
 		$fields = [
 			'header'    => get_field('header', 'option'),
+			'title'    => get_field('title', 'option'),
 			'r_reviews' => get_field('r_reviews', 'option') ?: [],
 
 			'section_id' => get_field('section_id'),

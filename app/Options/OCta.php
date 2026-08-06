@@ -32,14 +32,8 @@ class Octa extends Options
 				'toolbar'      => 'basic',
 				'media_upload' => false,
 			])
-			->addLink('button1', [
-				'label'         => 'Przycisk #1 (jasny)',
-				'return_format' => 'array',
-			])
-			->addLink('button2', [
-				'label'         => 'Przycisk #2 (biały)',
-				'return_format' => 'array',
-			])
+			->addText('phone', ['label' => 'Numer telefonu'])
+			->addText('mail', ['label' => 'Email'])
 			->addText('title', ['label' => 'Tytuł'])
 			->addText('shortcode', [
 				'label' => 'Kod formularza',
@@ -47,6 +41,6 @@ class Octa extends Options
 			])
 			->endGroup();
 
-		return $octa;
+		return $octa; 
 	}
 }

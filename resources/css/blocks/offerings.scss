@@ -1,0 +1,13 @@
+.offerings-swiper {
+    overflow: hidden;
+}
+
+.offerings-swiper .swiper-slide {
+    height: auto;
+}
+
+@media (min-width: 1024px) {
+    .offerings-swiper .swiper-slide {
+        width: auto;
+    }
+}

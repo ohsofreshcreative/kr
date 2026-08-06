@@ -46,6 +46,7 @@ class Faq extends Block
 				'return_format' => 'array',
 				'preview_size' => 'thumbnail',
 			])
+			->addText('title', ['label' => 'Tytuł'])
 			->addText('header', ['label' => 'Nagłówek'])
 			->addWysiwyg('text', [
 				'label' => 'Treść',
@@ -121,6 +122,7 @@ class Faq extends Block
 					'section-brand' => 'Marki',
 					'section-gradient' => 'Gradient',
 					'section-dark' => 'Ciemne',
+					'section-lighter' => 'Jaśniejsze F0FAE6',
 				],
 				'default_value' => 'none',
 				'ui' => 0,

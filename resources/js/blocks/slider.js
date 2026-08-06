@@ -30,12 +30,21 @@ const initSlider = () => {
       progressFill.style.width = pct + '%';
     };
 
-    new Swiper(slider, {
-      modules: [Pagination, Navigation],
-      loop: false,
-      grabCursor: true,
-      slidesPerView: 'auto',
-      spaceBetween: 80,
+new Swiper(slider, {
+  modules: [Pagination, Navigation],
+  loop: false,
+  grabCursor: true,
+  slidesPerView: 1.2, 
+  spaceBetween: 32,
+  breakpoints: {
+
+    768: {
+      slidesPerView: 2.3,
+    },
+    1024: {
+      slidesPerView: 3.3, 
+    },
+  },
       navigation: {
         nextEl: slider.querySelector('.__next'),
         prevEl: slider.querySelector('.__prev'),

@@ -1,0 +1,1 @@
+import{t as e}from"./swiper-C79jHJ44.js";import{t}from"./navigation-D2U0gvMl.js";(()=>{let n=document.querySelectorAll(`.values-swiper`);n.length&&n.forEach(n=>{new e(n,{modules:[t],grabCursor:!0,slidesPerView:`auto`,spaceBetween:24,navigation:{prevEl:n.closest(`section`).querySelector(`.__prev`),nextEl:n.closest(`section`).querySelector(`.__next`)}})})})();

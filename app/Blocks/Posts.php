@@ -50,7 +50,11 @@ class Posts extends Block
 				'label' => 'Przycisk',
 				'return_format' => 'array',
 			])
-
+			->addImage('image', [
+				'label' => 'Obraz',
+				'return_format' => 'array',
+				'preview_size' => 'thumbnail',
+			])
 			->addTrueFalse('show_image', [
 				'label' => 'Pokaż obrazek',
 				'default_value' => 1,

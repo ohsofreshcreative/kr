@@ -44,16 +44,16 @@ class Hero extends Block
 				'return_format' => 'array',
 				'preview_size' => 'thumbnail',
 			])
-			->addFile('video', [
-				'label' => 'Wideo (w tle)',
-				'return_format' => 'url',
-			])
 			->addText('title', ['label' => 'Tytuł'])
 			->addWysiwyg('text', [
 				'label' => 'Treść',
 				'tabs' => 'all', // 'visual', 'text', 'all'
 				'toolbar' => 'full', // 'basic', 'full'
 				'media_upload' => true,
+			])
+			->addText('name', [
+				'label' => 'Imie i Nazwisko',
+				'required' => 0,
 			])
 			->addLink('button1', [
 				'label' => 'Przycisk #1',
@@ -63,6 +63,17 @@ class Hero extends Block
 				'label' => 'Przycisk #2',
 				'return_format' => 'array',
 			])
+
+			->addRepeater('logos', [
+				'label' => 'Logotypy',
+				'layout' => 'table',
+			])
+			->addImage('logo', [
+				'label' => 'Logo',
+				'return_format' => 'array',
+				'preview_size' => 'thumbnail',
+			])
+			->endRepeater()
 			->endGroup()
 
 			/*--- USTAWIENIA BLOKU ---*/
@@ -114,6 +125,8 @@ class Hero extends Block
 					'section-brand' => 'Marki',
 					'section-gradient' => 'Gradient',
 					'section-dark' => 'Ciemne',
+					'section-light-green' => 'Jasno zielone',
+
 				],
 				'default_value' => 'none',
 				'ui' => 0, // Ulepszony interfejs

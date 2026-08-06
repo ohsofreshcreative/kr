@@ -74,6 +74,7 @@ const initReviewPopup = (scope = document) => {
  * @param {HTMLElement} scope - Element, w którym szukamy karuzeli.
  */
 const initReviewsSwiper = (scope = document) => {
+	 console.log('Reviews init');
   const swiperElements = scope.querySelectorAll('.reviews-swiper:not(.swiper-initialized)');
   if (!swiperElements.length) return;
 
@@ -101,6 +102,7 @@ const initReviewsSwiper = (scope = document) => {
     };
 
     // ... (reszta kodu Swipera pozostaje bez zmian)
+	console.log(swiperEl);
     new Swiper(swiperEl, {
       modules: [Navigation, Pagination],
       slidesPerView: 1.2,

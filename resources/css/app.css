@@ -5,61 +5,62 @@
 @source "../../app/**/*.php";
 @source "../js/**/*.{js,ts,jsx,tsx}";
 
-/* Twoje “źródłowe” zmienne RGB */
 :root {
   /* base */
-  --body: 42 63 80; /* #2A3F50 */
+  /* --body: 42 63 80; /* #2A3F50 */
+  --body: 24 38 12;         /* #18260C */
 
-/* PRIMARY (lewa kolumna – granat) */
---primary: 23 28 132;   /* #171C84 */
---p-hover: 5 6 26;      /* #05061A */
+/* PRIMARY (zielony) */
+--primary: 92 116 68;      /* #5C7444 */
+--p-hover: 18 31 14;       /* #121F0E */
 
---p-50: 200 202 240;    /* #C8CAF0 */
---p-100: 168 170 221;   /* #A8AADD */
---p-200: 133 136 204;   /* #8588CC */
---p-300: 92 96 182;     /* #5C60B6 */
---p-400: 57 61 162;     /* #393DA2 */
---p-500: 23 28 132;     /* #171C84 */
---p-600: 19 23 110;     /* #13176E */
---p-700: 15 19 88;      /* #0F1358 */
---p-800: 12 14 66;      /* #0C0E42 */
---p-900: 8 9 44;        /* #08092C */
---p-dark: 5 6 26;       /* #05061A */
+--p-50: 227 240 213;       /* #E3F0D5 */
+--p-100: 198 223 173;      /* #C6DFAD */
+--p-200: 184 214 150;      /* #B8D696 */
+--p-300: 150 183 115;      /* #96B773 */
+--p-400: 122 158 86;       /* #7A9E56 */
+--p-500: 92 116 68;        /* #5C7444 */
+--p-600: 77 97 57;         /* #4D6139 */
+--p-700: 61 77 45;         /* #3D4D2D */
+--p-800: 46 68 25;         /* #2E4419 */
+--p-900: 24 38 12;         /* #18260C */
+--p-dark: 18 31 14;        /* #121F0E */
 
---action: rgb(23, 28, 132);
+--action: rgb(92, 116, 68);
 
-/* SECONDARY (niebieski) */
---secondary: 38 130 232;  /* #2682E8 */
---s-hover: 32 108 193;    /* #206CC1 */
+/* SECONDARY (jasna zielen) */
+--secondary: 238 255 219;  /* #EEFFDB */
+--s-hover: 171 190 150;    /* #ABBE96 */
 
---s-50: 212 230 250;    /* #D4E6FA */
---s-100: 183 213 247;   /* #B7D5F7 */
---s-200: 146 192 243;   /* #92C0F3 */
---s-300: 110 172 240;   /* #6EACF0 */
---s-400: 74 151 236;    /* #4A97EC */
---s-500: 38 130 232;    /* #2682E8 */
---s-600: 32 108 193;    /* #206CC1 */
---s-700: 25 87 155;     /* #19579B */
---s-800: 19 65 116;     /* #134174 */
---s-900: 13 43 77;      /* #0D2B4D */
---s-dark: 8 26 46;      /* #081A2E */
+--s-50: 252 255 248;       /* #FCFFF8 */
+--s-100: 249 255 243;      /* #F9FFF3 */
+--s-150: 215 228 207;      /* #D7E4CF */
+--s-200: 247 255 237;      /* #F7FFED */
+--s-300: 244 255 234;      /* #F4FFEA */
+--s-400: 241 255 225;      /* #F1FFE1 */
+--s-500: 238 255 219;      /* #EEFFDB */
+--s-600: 205 223 184;      /* #CCDFB8 */
+--s-700: 171 190 150;      /* #ABBE96 */
+--s-800: 131 145 114;      /* #839172 */
+--s-900: 91 103 71;        /* #5B6747 */
+--s-dark: 60 74 47;        /* #3C4A2F */
 
+/* THIRD (ciemny szary z makiety "Shades") */
+--third: 38 38 38;         /* #262626 */
+--t-hover: 32 32 32;       /* #202020 */
 
-/* THIRD (różowy/fioletowy) */
---third: 248 129 240; /* #F881F0 */
---t-hover: 207 108 200; /* #CF6CC8 */
+--t-50: 212 212 212;       /* #D4D4D4 */
+--t-100: 183 183 183;      /* #B7B7B7 */
+--t-200: 147 147 147;      /* #939393 */
+--t-300: 110 110 110;      /* #6E6E6E */
+--t-400: 74 74 74;         /* #4A4A4A */
+--t-500: 38 38 38;         /* #262626 */
+--t-600: 32 32 32;         /* #202020 */
+--t-700: 25 25 25;         /* #191919 */
+--t-800: 19 19 19;         /* #131313 */
+--t-900: 13 13 13;         /* #0D0D0D */
+--t-dark: 8 8 8;           /* #080808 */
 
---t-50: 254 230 252;  /* #FEE6FC */
---t-100: 253 213 250; /* #FDD5FA */
---t-200: 252 192 248; /* #FCC0F8 */
---t-300: 250 171 245; /* #FAABF5 */
---t-400: 249 150 243; /* #F996F3 */
---t-500: 248 129 240; /* #F881F0 */
---t-600: 207 108 200; /* #CF6CC8 */
---t-700: 165 86 160;  /* #A556A0 */
---t-800: 124 65 120;  /* #7C4178 */
---t-900: 83 43 80;    /* #532B50 */
---t-dark: 50 26 48;   /* #321A30 */
 
   /* neutrals / fixed backgrounds */
   --text-body: rgb(var(--p-800));
@@ -69,6 +70,17 @@
   --bg-lighter: rgb(var(--s-50));
   --bg-brand: #002704;
   --bg-dark: #071622;
+  --brown: 74 44 31; /* #4A2C1F */
+  --cream: 247 251 242; /* #F7FBF2 */
+
+  /* CARD BACKGROUNDS */
+--card-100: 240 250 230; /* #F0FAE6 */
+--card-200: 215 228 207; /* #D7E4CF */
+--card-300: 184 214 150; /* #B8D696 */
+--card-400: 150 183 115; /* #96B773 */
+--card-500: 122 158 86;  /* #7A9E56 */
+
+
 }
 
 @theme {
@@ -93,7 +105,9 @@
   /* secondary */
   --color-secondary: rgb(var(--secondary));
   --color-secondary-hover: rgb(var(--s-hover));
+    --color-secondary-50: rgb(var(--s-50));
   --color-secondary-100: rgb(var(--s-100));
+  --color-secondary-150: rgb(var(--s-150));
   --color-secondary-200: rgb(var(--s-200));
   --color-secondary-300: rgb(var(--s-300));
   --color-secondary-400: rgb(var(--s-400));
@@ -120,7 +134,7 @@
 
   --color-gray: var(--gray);
   --color-action: var(--action);
-
+--color-brown: rgb(var(--brown));
   --color-page: var(--bg);
   --color-background-light: var(--bg-light);
   --color-background-brand: var(--bg-brand);
@@ -136,7 +150,14 @@
   --gradient: linear-gradient(90deg, #2265CB 0%, #181D84 100%);
   --gradient-light: linear-gradient(-90deg, #0E3A2D 0%, #0A533D 100%);
   --gradient-s: linear-gradient(-90deg, #DE855D 0%, #D37A51 100%);
+  --color-cream: rgb(var(--cream));
 
+
+--color-card-100: rgb(var(--card-100));
+--color-card-200: rgb(var(--card-200));
+--color-card-300: rgb(var(--card-300));
+--color-card-400: rgb(var(--card-400));
+--color-card-500: rgb(var(--card-500));
 }
 
 @utility m-header {
@@ -161,7 +182,15 @@
 
 /*-- USED ---*/
 @import '../css/blocks/hero.scss';
+@import '../css/blocks/partnership.scss';
+@import '../css/blocks/solutions.scss';
+@import '../css/blocks/boxes.scss';
 @import '../css/blocks/about.scss';
+@import '../css/blocks/services.scss';
+@import '../css/blocks/newsletter.scss';
+@import '../css/blocks/offerings.scss';
+
+
 @import '../css/blocks/values.scss';
 @import '../css/blocks/content.scss';
 @import '../css/blocks/cta.scss';

@@ -1,78 +1,75 @@
 <!--- about -->
-
 <section
-	data-gsap-anim="section"
-	@if(!empty($section_id)) id="{{ $section_id }}" @endif
-	@class([ 'b-about relative -smt' ,
-	$sectionClass=> filled($sectionClass),
-	$section_class => filled($section_class),
-	$background => filled($background) && $background !== 'none',
-	])>
+    data-gsap-anim="section"
+    @if(!empty($section_id)) id="{{ $section_id }}" @endif
+    @class([ 'b-about relative -smt' ,
+    $sectionClass=> filled($sectionClass),
+    $section_class => filled($section_class),
+    $background => filled($background) && $background !== 'none',
+    ])>
 
-	<div class="__wrapper c-main relative">
-		<div class="__col grid grid-cols-1 lg:grid-cols-3 items-center gap-8 lg:gap-10">
+    <div class="__wrapper c-main relative">
+        <div class="__col grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16">
 
-			<div class="__content ">
-				<h3 data-gsap-element="header" class="text-primary">{{ $g_about['header'] }}</h3>
+            @if (!empty($g_about['image']['url']))
+            <div data-gsap-element="img" class="__img  relative">
+                <div class="absolute  -top-14 -right-14  w-28 h-28 rounded-full bg-primary-200 z-20 pointer-events-none"></div>
 
-				<div data-gsap-element="txt" class="__txt mt-4">
-					{!! $g_about['text'] !!}
-				</div>
+                <figure class="w-full h-104 md:h-186 m-0 relative z-10 overflow-hidden radius-img ">
+                    <picture class="w-full h-full">
+                        <img class="w-full h-full object-cover " src="{{ $g_about['image']['url'] }}" alt="{{ $g_about['image']['alt'] ?? '' }}" loading="lazy">
+                    </picture>
+                </figure>
+            </div>
+            @endif
 
-				<div class="inline-buttons m-btn">
-					@if (!empty($g_about['button1']))
-					<x-button
-						:href="$g_about['button1']['url']"
-						variant="primary"
-						class=""
-						data-gsap-element="btn">
-						{{ $g_about['button1']['title'] }}
-					</x-button>
-					@endif
+            <div class="__content ">
+                @if (!empty($g_about['title']))
+                <span data-gsap-element="header" class="__title ">
+                    {{ $g_about['title'] }}
+                </span>
+                @endif
 
-					@if (!empty($g_about['button2']))
-					<x-button
-						:href="$g_about['button2']['url']"
-						variant="secondary"
-						class=""
-						data-gsap-element="btn">
-						{{ $g_about['button2']['title'] }}
-					</x-button>
-					@endif
-				</div>
+                @if (!empty($g_about['header']))
+                <h2 data-gsap-element="header" class="text-h3 m-header text-black/80">
+                    {{ $g_about['header'] }}
+                </h2>
+                @endif
+ 
+                @if (!empty($g_about['text']))
+                <div data-gsap-element="txt" class="__txt text-black/80">
+                    {!! $g_about['text'] !!}
+                </div>
+                @endif
 
-			</div>
+                <!-- PRZYCISKI -->
+                @if (!empty($g_about['button1']) || !empty($g_about['button2']))
+                <div class="inline-buttons m-btn flex flex-wrap gap-4">
+                    @if (!empty($g_about['button1']['url']))
+                    <x-button
+                        :href="$g_about['button1']['url']"
+                        variant="primary"
+                        class="rounded-full px-8 py-3.5"
+                        data-gsap-element="btn">
+                        {{ $g_about['button1']['title'] ?? $g_about['button1']['text'] }}
+                    </x-button>
+                    @endif
 
-			@if (!empty($g_about['image']))
-			<div data-gsap-element="img" class="__img h-full">
-				<figure class="w-full h-full m-0">
-					<picture class="w-full h-full">
-						<img class="w-full h-full object-cover radius-img" src="{{ $g_about['image']['url'] }}" alt="{{ $g_about['image']['alt'] ?? '' }}">
-					</picture>
-				</figure>
-			</div>
-			@endif
+                    @if (!empty($g_about['button2']['url']))
+                    <x-button
+                        :href="$g_about['button2']['url']"
+                        variant="secondary"
+                        class="rounded-full px-8 py-3.5"
+                        data-gsap-element="btn">
+                        {{ $g_about['button2']['title'] ?? $g_about['button2']['text'] }}
+                    </x-button>
+                    @endif
+                </div>
+                @endif
 
-			@if (!empty($r_about))
+            </div>
 
-			<div class="grid gap-4">
-				@foreach ($r_about as $item)
-				<div data-gsap-element="card" class="__card relative bg-white radius flex gap-6 items-center p-8">
-
-					<figure class="mb-0">
-						<picture>
-							<img class="" src="{{ get_template_directory_uri() }}/resources/images/check.svg" />
-						</picture>
-					</figure>
-					@if (!empty($item['title']))
-					<p class="text-h7">{{ $item['title'] }}</p>
-					@endif
-				</div>
-				@endforeach
-			</div>
-			@endif
-
-		</div>
-	</div>
+        </div>
+    </div>
 
 </section>

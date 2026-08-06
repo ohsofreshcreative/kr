@@ -39,6 +39,7 @@ class Cards extends Block
 			/*--- TAB #1 ---*/
 			->addTab('Treści', ['placement' => 'top'])
 			->addGroup('g_cards', ['label' => ''])
+			->addText('title', ['label' => 'Tytuł'])
 			->addText('header', ['label' => 'Nagłówek'])
 			->addTextarea('text', [
 				'label' => 'Opis',
@@ -106,20 +107,21 @@ class Cards extends Block
 				'ui_off_text' => 'Nie',
 			])
 			->addSelect('background', [
-                'label' => 'Kolor tła',
-                'choices' => [
-                    'none' => 'Brak (domyślne)',
-                    'section-white' => 'Białe',
-                    'section-light' => 'Jasne',
-                    'section-gray' => 'Szare',
-                    'section-brand' => 'Marki',
-                    'section-gradient' => 'Gradient',
-                    'section-dark' => 'Ciemne',
-                ],
-                'default_value' => 'none',
-                'ui' => 0, // Ulepszony interfejs
-                'allow_null' => 0,
-            ]);
+				'label' => 'Kolor tła',
+				'choices' => [
+					'none' => 'Brak (domyślne)',
+					'section-white' => 'Białe',
+					'section-light' => 'Jasne',
+					'section-lighter' => 'Jaśniejsze F0FAE6',
+					'section-gray' => 'Szare',
+					'section-brand' => 'Marki',
+					'section-gradient' => 'Gradient',
+					'section-dark' => 'Ciemne',
+				],
+				'default_value' => 'none',
+				'ui' => 0, // Ulepszony interfejs
+				'allow_null' => 0,
+			]);
 
 		return $cards;
 	}

@@ -6,19 +6,21 @@ use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 use App\Support\SectionClasses;
 
-class Proces extends Block
+class proces extends Block
 {
-	public $name = 'Proces';
+	public $name = 'Treść, zdjęcie i kafelki (proces)';
 	public $description = 'proces';
 	public $slug = 'proces';
 	public $category = 'formatting';
-	public $icon = 'randomize';
-	public $keywords = ['proces'];
+	public $icon = 'align-pull-left';
+	public $keywords = ['tresc', 'zdjecie'];
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => true,
+		'mode' => false,
 		'jsx' => true,
+		'anchor' => true,
+		'customClassName' => true,
 	];
 
 	public function fields()
@@ -26,53 +28,73 @@ class Proces extends Block
 		$proces = new FieldsBuilder('proces');
 
 		$proces
-			->setLocation('block', '==', 'acf/proces') // ważne!
+			->setLocation('block', '==', 'acf/proces')
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Proces - Kafelki na dole',
+				'label' => 'Treść oraz zdjęcie (proces)',
 				'open' => false,
 				'multi_expand' => true,
 			])
-			/*--- FIELDS ---*/
-			->addTab('Treść', ['placement' => 'top'])
-			->addGroup('g_proces', ['label' => ''])
-			->addText('header', ['label' => 'Nagłówek'])
-			->addWysiwyg('txt', [
-				'label' => 'Opis',
-				'tabs' => 'all', // 'visual', 'text', 'all'
-				'toolbar' => 'full', // 'basic', 'full'
-				'media_upload' => true,
-			])
-			->endGroup()
 
-			->addTab('Kafelki', ['placement' => 'top'])
-			->addRepeater('r_proces', [
-				'label' => 'proces',
-				'layout' => 'table', // 'row', 'block', albo 'table'
-				'min' => 3,
-				'max' => 4,
-				'button_label' => 'Dodaj element oferty'
-			])
-			->addText('number', [
-				'label' => 'Krok',
-			])
+			->addTab('Elementy', ['placement' => 'top'])
+			->addGroup('g_proces', ['label' => ''])
 			->addImage('image', [
 				'label' => 'Obraz',
-				'return_format' => 'array', // lub 'url', lub 'id'
+				'return_format' => 'array',
 				'preview_size' => 'medium',
+				'conditional_logic' => [[[
+					'field' => 'media_type',
+					'operator' => '==',
+					'value' => 'image',
+				]]],
 			])
-			->addText('title', [
-				'label' => 'Nagłówek',
-			])
+			->addText('title', ['label' => 'Tytuł'])
+			->addText('header', ['label' => 'Nagłówek - sekcji'])
 			->addWysiwyg('txt', [
 				'label' => 'Treść',
 				'tabs' => 'all',
 				'toolbar' => 'full',
 				'media_upload' => true,
 			])
+
+			->endGroup()
+
+			->addTab('Kafelki', ['placement' => 'top'])
+			->addRepeater('r_proces', [
+				'label' => 'Kafelki',
+				'layout' => 'table',
+				'min' => 1,
+				'button_label' => 'Dodaj kafelek'
+			])
+
+			->addImage('card_image', [
+				'label' => 'Obraz',
+				'return_format' => 'array',
+				'preview_size' => 'thumbnail',
+			])
+
+			->addText('card_title', [
+				'label' => 'Nagłówek',
+			])
+			->addTextarea('card_text', [
+				'label' => 'Opis',
+			])
+->addSelect('card_background', [
+    'label' => 'Kolor tła kafelka',
+    'choices' => [
+        'bg-card-100' => 'Zieleń 100',
+        'bg-card-200' => 'Zieleń 200',
+        'bg-card-300' => 'Zieleń 300',
+        'bg-card-400' => 'Zieleń 400',
+        'bg-card-500' => 'Zieleń 500',
+    ],
+    'default_value' => 'bg-card-100',
+])
+
+
 			->endRepeater()
 
 			/*--- USTAWIENIA BLOKU ---*/
@@ -83,8 +105,14 @@ class Proces extends Block
 			->addText('section_class', [
 				'label' => 'Dodatkowe klasy CSS',
 			])
+			->addTrueFalse('nolist', [
+				'label' => 'Brak punktatorów',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
 			->addTrueFalse('flip', [
-				'label' => 'Odwrotna kolejność',
+				'label' => 'Odwrotna kolejność (zdjęcie po prawej)',
 				'ui' => 1,
 				'ui_on_text' => 'Tak',
 				'ui_off_text' => 'Nie',
@@ -117,12 +145,12 @@ class Proces extends Block
 					'section-brand' => 'Marki',
 					'section-gradient' => 'Gradient',
 					'section-dark' => 'Ciemne',
+					'section-soft-green' => 'Jasno zielone',
 				],
+
 				'default_value' => 'none',
-				'ui' => 0,
 				'allow_null' => 0,
 			]);
-
 
 		return $proces;
 	}
@@ -132,7 +160,6 @@ class Proces extends Block
 		$fields = [
 			'g_proces' => get_field('g_proces'),
 			'r_proces' => get_field('r_proces'),
-
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 

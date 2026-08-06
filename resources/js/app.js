@@ -1,6 +1,6 @@
 /*--- GŁÓWNE IMPORTY ---*/
 // Importujemy tylko Alpine, resztę bibliotek (GSAP) ładujemy globalnie
-
+console.log('app.js loaded');
 import Alpine from 'alpinejs';
 
 import baguetteBox from 'baguettebox.js';
@@ -17,8 +17,11 @@ import './footer-accordion.js';
 document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.b-reviews')) import('./blocks/reviews');
   if (document.querySelector('.b-tabs')) import('./blocks/tabs');
+    if (document.querySelector('.b-cards')) import('./blocks/cards');
   if (document.querySelector('.b-slider')) import('./blocks/slider');
   if (document.querySelector('.b-values')) import('./blocks/values');
+    if (document.querySelector('.b-cta')) import('./blocks/cta');
+    if (document.querySelector('.b-offerings')) import('./blocks/offerings');
   if (document.querySelector('.b-catalogues')) import('./blocks/catalogues');
 });
 
@@ -272,13 +275,6 @@ function initializeAmeliaBlock($block) {
   fetchData();
 }
 
-// Uruchom logikę dla każdego bloku Amelia na stronie edycji
-acf.addAction('ready_field/name=amelia_service', function($field) {
-    const $block = $field.closest('.acf-block-fields');
-    if ($block.data('amelia-initialized')) return;
-    $block.data('amelia-initialized', true);
-    initializeAmeliaBlock($block);
-});
 
 
 

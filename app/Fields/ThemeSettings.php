@@ -13,37 +13,48 @@ class ThemeSettings extends Field
 
 		$theme
 			->setLocation('options_page', '==', 'theme-settings')
-			->addTab('Logo', ['placement' => 'top'])
 			->addImage('logo', [
 				'label' => 'Logo',
-				'return_format' => 'array',
+				'return_format' => 'array', // lub 'url' / 'id'
 				'preview_size' => 'medium',
 				'library' => 'all',
 			])
 			->addImage('logo_footer', [
 				'label' => 'Logo Stopka',
-				'return_format' => 'array', 
+				'return_format' => 'array', // lub 'url' / 'id'
 				'preview_size' => 'medium',
 				'library' => 'all',
 			])
 
-			->addTab('Dane kontaktowe (Stopka)', ['placement' => 'top'])
-			->addGroup('footer_contact', ['label' => 'Dane w pierwszej kolumnie stopki'])
-
-			->addWysiwyg('address', [
-				'label' => 'Adres / Dane firmy',
-				'tabs' => 'all',
-				'toolbar' => 'full',
-				'media_upload' => true,
+			->addGroup('g_contact_info', [
+				'label' => 'Dane kontaktowe i logo',
+				'layout' => 'block',
 			])
+
 			->addText('phone', [
-				'label' => 'Numer telefonu',
+				'label' => 'Telefon',
 			])
-			->addText('email', [
-				'label' => 'Adres E-mail',
+			->addText('mail', [
+				'label' => 'Adres e-mail',
 			])
-			->endGroup();
-
+			->endGroup()
+			->addRepeater('social_media', [
+				'label' => 'Media społecznościowe',
+				'layout' => 'table',
+				'button_label' => 'Dodaj link',
+			])
+			->addText('link', [
+				'label' => 'URL linku',
+			])
+			->addSelect('icon', [
+				'label' => 'Ikona',
+				'choices' => [
+					'facebook' => 'Facebook',
+					'instagram' => 'Instagram',
+					'youtube' => 'Youtube',
+				],
+			])
+			->endRepeater();
 		return [$theme];
 	}
 }

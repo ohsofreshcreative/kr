@@ -8,89 +8,44 @@ use App\Support\SectionClasses;
 
 class About extends Block
 {
-	public $name = 'O firmie';
+	public $name = 'Sekcja - O mnie';
 	public $description = 'about';
 	public $slug = 'about';
 	public $category = 'formatting';
-	public $icon = 'universal-access-alt';
-	public $keywords = ['tresc', 'zdjecie'];
+	public $icon = 'images-alt';
+	public $keywords = ['tresc', 'about',];
 	public $mode = 'edit';
-public $supports = [
-    'align' => false,
-    'mode' => true,
-    'jsx' => true,
-    'anchor' => true,
-    'customClassName' => true,
-];
+	public $supports = [
+		'align' => false,
+		'mode' => true,
+		'jsx' => true,
+		'anchor' => true,
+		'customClassName' => true,
+	];
 
 	public function fields()
 	{
 		$about = new FieldsBuilder('about');
 
 		$about
-			->setLocation('block', '==', 'acf/about') // ważne!
+			->setLocation('block', '==', 'acf/about')
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'O firmie',
+				'label' => 'O mnie',
 				'open' => false,
 				'multi_expand' => true,
 			])
-			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
-			->addGroup('g_about', ['label' => ''])
-			->addImage('image', [
-				'label' => 'Obraz',
-				'return_format' => 'array',
-				'preview_size' => 'thumbnail',
-			])
-			->addText('header', ['label' => 'Nagłówek'])
-			->addWysiwyg('text', [
-				'label' => 'Treść',
-				'tabs' => 'all',
-				'toolbar' => 'full',
-				'media_upload' => true,
-			])
-			->addLink('button1', [
-				'label' => 'Przycisk #1',
-				'return_format' => 'array',
-			])
-			->addLink('button2', [
-				'label' => 'Przycisk #2',
-				'return_format' => 'array',
-			])
-			->endGroup()
-
-			/*--- TAB #2 ---*/
-			->addTab('Kafelki', ['placement' => 'top'])
-			->addRepeater('r_about', [
-				'label' => 'Kafelki',
-				'layout' => 'table', // 'row', 'block', albo 'table'
-				'min' => 1,
-				'button_label' => 'Dodaj kafelek'
-			])
-			->addText('title', [
-				'label' => 'Nagłówek',
-			])
-			->endRepeater()
+			->addMessage('Informacja', 'Sekcję "O mnie" edytujemy klikając w menu panelu administratora „Sekcja - O mnie".')
 
 			/*--- USTAWIENIA BLOKU ---*/
 
 			->addTab('Ustawienia bloku', ['placement' => 'top'])
-			->addText('section_id', [
-				'label' => 'ID',
-			])
-			->addText('section_class', [
-				'label' => 'Dodatkowe klasy CSS',
-			])
-			->addTrueFalse('nolist', [
-				'label' => 'Brak punktatorów',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
+			->addText('section_id', ['label' => 'ID'])
+			->addText('section_class', ['label' => 'Dodatkowe klasy CSS'])
 			->addTrueFalse('flip', [
 				'label' => 'Odwrotna kolejność',
 				'ui' => 1,
@@ -127,39 +82,39 @@ public $supports = [
 					'section-dark' => 'Ciemne',
 				],
 				'default_value' => 'none',
-				'ui' => 0, // Ulepszony interfejs
+				'ui' => 0,
 				'allow_null' => 0,
 			]);
 
 		return $about;
 	}
 
-	public function with(): array
-	{
-		$fields = [
-			'g_about' => get_field('g_about'),
-			'r_about' => get_field('r_about'),
+public function with(): array
+{
+	$fields = [
 
-			'section_id' => get_field('section_id'),
-			'section_class' => get_field('section_class'),
+		'g_about' => get_field('g_about', 'option'),
 
-			'flip' => (bool) get_field('flip'),
-			'wide' => (bool) get_field('wide'),
-			'nomt' => (bool) get_field('nomt'),
-			'gap' => (bool) get_field('gap'),
-			'nolist' => (bool) get_field('nolist'),
+		'section_id' => get_field('section_id'),
+		'section_class' => get_field('section_class'),
 
-			'background' => get_field('background') ?: 'none',
-		];
+		'flip' => (bool) get_field('flip'),
+		'wide' => (bool) get_field('wide'),
+		'nomt' => (bool) get_field('nomt'),
+		'gap' => (bool) get_field('gap'),
 
-		$fields['sectionClass'] = SectionClasses::fromMap($fields, [
-			'flip' => 'order-flip',
-			'wide' => 'wide',
-			'nomt' => '!mt-0',
-			'gap' => 'wider-gap',
-			'nolist' => 'no-list',
-		]);
+		'background' => get_field('background') ?: 'none',
+	];
 
-		return $fields;
-	}
+
+	$fields['sectionClass'] = SectionClasses::fromMap($fields, [
+		'flip' => 'order-flip',
+		'wide' => 'wide',
+		'nomt' => '!mt-0',
+		'gap' => 'wider-gap',
+	]);
+
+
+	return $fields;
+}
 }

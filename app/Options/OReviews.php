@@ -19,6 +19,9 @@ class Oreviews extends Options
 		$oreviews = new FieldsBuilder('oreviews');
 
 		$oreviews
+			->addText('title', [
+				'label' => 'Tytuł',
+			])
 			->addText('header', ['label' => 'Nagłówek'])
 			->addRepeater('r_reviews', [
 				'label'        => 'Opinie',
@@ -27,9 +30,7 @@ class Oreviews extends Options
 				'max'          => 50,
 				'button_label' => 'Dodaj opinię',
 			])
-			->addText('header', [
-				'label' => 'Nagłówek',
-			])
+
 			->addTextarea('txt', [
 				'label'     => 'Treść opinii',
 				'rows'      => 4,
@@ -45,6 +46,22 @@ class Oreviews extends Options
 			])
 			->addText('position', [
 				'label' => 'Stanowisko',
+			])
+			->addDatePicker('date', [
+				'label' => 'Data',
+				'display_format' => 'd.m.Y',
+				'return_format' => 'Y-m-d',
+				'first_day' => 1,
+			])
+			->addSelect('icon', [
+				'label' => 'Ikona',
+				'choices' => [
+					'google' => 'Google',
+					'linkedin' => 'LinkedIn',
+					'facebook' => 'Facebook',
+				],
+				'default_value' => 'LinkedIn',
+				'return_format' => 'value',
 			])
 			->endRepeater();
 
